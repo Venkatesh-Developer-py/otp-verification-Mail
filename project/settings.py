@@ -132,6 +132,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'pract1028@gmail.com'
-EMAIL_HOST_PASSWORD = 'ghat lthv ltjg npbj'
+EMAIL_HOST_PASSWORD = 'yguh qudw fycm shaz'
 
 DEFAULT_FROM_EMAIL = 'Apple 🍎 <pract1028@gmail.com>'
