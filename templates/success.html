@@ -1,172 +1,250 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Email Verified Successfully</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>Email Verified Successfully</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #10b981;
+            --green-dark: #059669;
+            --green-light: #34d399;
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 10px 25px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 40px 0 rgb(0 0 0 / 0.12);
+            --border: 1px solid rgb(0 0 0 / 0.08);
+        }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
-    background-size: 400% 400%;
-    animation: gradientSuccess 8s ease infinite;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    padding: 20px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@keyframes gradientSuccess {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-gradient);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-.success-box {
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    padding: 60px 50px;
-    border-radius: 32px;
-    width: 100%;
-    max-width: 480px;
-    text-align: center;
-    box-shadow: 
-        0 40px 80px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(255, 255, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    position: relative;
-    overflow: hidden;
-    animation: successSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--primary-green), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(52, 211, 153, 0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--primary-green), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(52, 211, 153, 0.6), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: float 20s infinite linear;
+            opacity: 0.1;
+            z-index: -1;
+        }
 
-@keyframes successSlideIn {
-    from {
-        opacity: 0;
-        transform: scale(0.7) translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
+        @keyframes float {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            100% { transform: translateX(-200px) translateY(-100px) rotate(360deg); }
+        }
 
-.success-icon {
-    font-size: 5rem;
-    margin-bottom: 2rem;
-    background: linear-gradient(135deg, #10b981, #34d399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: successBounce 2s infinite;
-}
+        .success-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: var(--border);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-@keyframes successBounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1); }
-    40% { transform: translateY(-20px) scale(1.05); }
-    60% { transform: translateY(-10px) scale(1.02); }
-}
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #064e3b, #065f46);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.03em;
-}
+        .success-icon {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto 1.5rem;
+            background: conic-gradient(from 0deg, var(--primary-green), var(--green-light), var(--primary-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
 
-.success-message {
-    font-size: 1.2rem;
-    color: #1e293b;
-    margin-bottom: 2.5rem;
-    font-weight: 500;
-    line-height: 1.6;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .success-icon::before {
+            content: '✓';
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            z-index: 1;
+        }
 
-.cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 18px 40px;
-    background: linear-gradient(135deg, #10b981, #34d399);
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    font-family: inherit;
-}
+        .success-icon::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: left 0.6s;
-}
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
 
-.cta-button:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(16, 185, 129, 0.5);
-    background: linear-gradient(135deg, #059669, #10b981);
-}
+        .success-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
 
-.cta-button:hover::before {
-    left: 100%;
-}
+        .success-subtitle {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
 
-.cta-button:active {
-    transform: translateY(-2px) scale(1);
-}
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            box-shadow: var(--shadow-md);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* Responsive */
-@media (max-width: 480px) {
-    .success-box {
-        padding: 45px 35px;
-        margin: 10px;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-    
-    .success-message {
-        font-size: 1.1rem;
-    }
-}
-</style>
+        .cta-button:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .cta-button .icon {
+            font-size: 1.125rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .success-container {
+                padding: 2.5rem 2rem;
+                margin: 0.5rem;
+            }
+            
+            .success-title {
+                font-size: 1.875rem;
+            }
+            
+            .success-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        /* Loading state for button */
+        .cta-button.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .cta-button.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            border: 2px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
+    <div class="success-container">
+        <div class="success-icon"></div>
+        <h1 class="success-title">Email Verified</h1>
+        <p class="success-subtitle">
+            Thank you for verifying your email. 
+            You can now access all features of your account.
+        </p>
+        <a href="/" class="cta-button" id="dashboardBtn">
+            <span class="icon">→</span>
+            Go to Dashboard
+        </a>
+    </div>
 
-<div class="success-box">
-    <div class="success-icon">✔️</div>
-    <h2>Email Verified Successfully</h2>
-    <p class="success-message">Thank you for verifying your email. You can now access all features of your account.</p>
-    
-    
-</div>
+    <script>
+        
+        document.getElementById('dashboardBtn').addEventListener('click', function(e) {
+            const btn = this;
+            btn.classList.add('loading');
+            btn.querySelector('.icon').style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = btn.getAttribute('href');
+            }, 800);
+        });
 
+        
+        window.addEventListener('load', () => {
+            document.querySelector('.success-icon').style.animationDelay = '0.1s';
+            document.querySelector('.success-title').style.animationDelay = '0.2s';
+            document.querySelector('.success-subtitle').style.animationDelay = '0.3s';
+            document.querySelector('.cta-button').style.animationDelay = '0.4s';
+        });
+    </script>
 </body>
 </html>
