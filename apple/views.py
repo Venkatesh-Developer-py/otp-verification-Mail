@@ -21,7 +21,7 @@ def email_send(request):
             })
         
         otp = random.randint(100000, 999999)
-        request.session.clear()  
+        request.session.flush()
         request.session['email'] = email
         request.session['otp'] = str(otp)
         request.session['otp_time'] = time.time()
@@ -41,7 +41,7 @@ def verify_otp(request):
         return redirect('email_send')
 
     if time.time() - request.session.get('otp_time', 0) > 120:
-        request.session.clear()
+        request.session.flush()
         return render(request, "email_verification.html", {
             "expired": True, "email": email
         })
@@ -55,7 +55,7 @@ def verify_otp(request):
             remaining_time = 0
 
         if attempts > 5:
-            request.session.clear()
+            request.session.flush()
             return render(request, "email_verification.html", {
                 "error": "Too many attempts. Please restart.",
                 "email": email,
@@ -63,7 +63,7 @@ def verify_otp(request):
             })
 
         if user_otp == request.session.get("otp"):
-            request.session.clear()
+            request.session.flush()
             return render(request, "success.html")
 
         request.session['otp_attempts'] = attempts
